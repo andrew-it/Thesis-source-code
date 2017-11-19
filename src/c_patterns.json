@@ -1,0 +1,51 @@
+{
+  "version": 0.1,
+  "language": "C",
+  "patterns": {
+    "STR_VAR": {
+      "pattern": "\""
+    },
+    "CHAR_VAR": {
+      "pattern": "'"
+    },
+    "LOOP": {
+      "pattern": "for(INITIAL_STATE, WHILE_CONDITION, STEP_EXPR){BODY}"
+    },
+    "IF_CONDITION": {
+      "pattern": "if(CONDITION){BODY}"
+    },
+    "ELSE_CONDITION": {
+      "pattern": "else{BODY}"
+    },
+    "ELIF_CONDITION": {
+      "pattern": "else if(CONDITION){BODY}"
+    },
+    "TERNARY": {
+      "pattern": "CONDITION:TRUE?FALSE;"
+    },
+    "FUNC_DECL": {
+      "signature_delimiter": ",",
+      "pattern": "\nRET_TYPE FUNC_NAME(SIGNATURE){\nBODY\n}"
+    },
+    "FUNC_CALL": {
+      "signature_delimiter": ",",
+      "pattern": "FUNC_NAME(PARAMS);"
+    },
+    "VAR_DECL": {
+      "pattern": "RET_TYPE VAR_NAME;"
+    },
+    "VAR_ASSIGNMENT": {
+      "pattern": "VAR_NAME = VALUE;"
+    },
+    "EMPTY_OPERATOR": {
+      "operator": ";"
+    },
+    "DEPENDENCY": {
+      "pattern": "#include <LIB>"
+    }
+  },
+  "dependencies": {
+    "stdio.h": ["printf", "scanf"],
+    "sthlib.h": ["sth"]
+  }
+}

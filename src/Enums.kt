@@ -1,0 +1,28 @@
+enum class EXPR_TYPES {
+    BODY,
+    RET_TYPE,
+    FUNC_NAME,
+    SIGNATURE,
+    PARAMS,
+    VALUE,
+    VAR_NAME,
+    LIB
+}
+
+enum class PATTERN_TYPES {
+    STR_VAR,
+    CHAR_VAR,
+    LOOP,
+    IF_CONDITION,
+    ELSE_CONDITION,
+    ELIF_CONDITION,
+    TERNARY,
+    FUNC_DECL,
+    FUNC_CALL,
+    VAR_DECL,
+    VAR_ASSIGNMENT,
+    EMPTY_OPERATOR,
+    DEPENDENCY,
+    PARAMS
+}
+
