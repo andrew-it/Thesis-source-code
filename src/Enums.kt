@@ -10,8 +10,8 @@ enum class EXPR_TYPES {
 }
 
 enum class PATTERN_TYPES {
-    STR_VAR,
-    CHAR_VAR,
+    VAR_STR,
+    VAR_CHAR,
     LOOP,
     IF_CONDITION,
     ELSE_CONDITION,

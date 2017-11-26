@@ -1,14 +1,16 @@
 // TODO entry point???
-// рассуждения по поводу языка реализации в методологии
+// TODO the table of correspondence between SLang and C standard functions
 
-fun main(args: Array<String>){
-    val print_lex = HashMap<EXPR_TYPES, Lexemable>()
+fun main(args: Array<String>) {
+    val print_lex = HashMap<EXPR_TYPES, Constructable>()
     print_lex.put(EXPR_TYPES.FUNC_NAME, StrStub("printf"))
-    print_lex.put(EXPR_TYPES.PARAMS, StrVariable("Hello world!"))
+    print_lex.put(EXPR_TYPES.PARAMS, StrVariable(
+            Lexemes(EXPR_TYPES.VALUE, StrStub("Hello world!")))
+    )
 
     val print_call = FunctionCall(Lexemes(print_lex))
 
-    val main_call = java.util.HashMap<EXPR_TYPES, Lexemable>()
+    val main_call = java.util.HashMap<EXPR_TYPES, Constructable>()
     main_call.put(EXPR_TYPES.FUNC_NAME, StrStub("main"))
     main_call.put(EXPR_TYPES.SIGNATURE, Parameters(arrayOf(StrStub(""))))
     main_call.put(EXPR_TYPES.BODY, Scope(arrayOf(print_call)))

@@ -42,6 +42,9 @@
     },
     "DEPENDENCY": {
       "pattern": "#include <LIB>"
+    },
+    "VAR_STR": {
+      "pattern": "\"VALUE\""
     }
   },
   "dependencies": {
