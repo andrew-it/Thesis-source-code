@@ -43,12 +43,20 @@
     "DEPENDENCY": {
       "pattern": "#include <LIB>"
     },
-    "VAR_STR": {
+    "VAL_STR": {
       "pattern": "\"VALUE\""
+    },
+    "VAL_INT": {
+      "pattern": "VALUE"
     }
   },
   "dependencies": {
     "stdio.h": ["printf", "scanf"],
     "sthlib.h": ["sth"]
+  },
+  "standard_types": {
+    "STRING": "char*",
+    "INT": "int",
+    "REAL": "float"
   }
 }

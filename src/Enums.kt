@@ -10,7 +10,8 @@ enum class EXPR_TYPES {
 }
 
 enum class PATTERN_TYPES {
-    VAR_STR,
+    VAL_STR,
+    VAL_INT,
     VAR_CHAR,
     LOOP,
     IF_CONDITION,
@@ -24,5 +25,11 @@ enum class PATTERN_TYPES {
     EMPTY_OPERATOR,
     DEPENDENCY,
     PARAMS
+}
+
+enum class STD_TYPES {
+    STRING,
+    INT,
+    REAL
 }
 
