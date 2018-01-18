@@ -3,7 +3,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 object PatternsLoader {
-    private val path_str = "src/c_patterns.json"
+    private const val path_str = "src/c_patterns.json"
     private val file_content: String = String(Files.readAllBytes(Paths.get(path_str)))
     private val json_object: JSONObject = JSONObject(file_content)
     private val dependencies: JSONObject = json_object.getJSONObject("dependencies")
@@ -16,23 +16,21 @@ object PatternsLoader {
                 .getString("pattern")
     }
 
-    fun getDependency(func_name: String): String {
-        for (key in dependencies.toMap().keys) {
-            if (dependencies.getJSONArray(key).toList().contains(func_name))
-                return key
+    fun getDependency(func_name: String): String? {
+        return dependencies.toMap().keys.firstOrNull {
+            dependencies.getJSONArray(it).toList().contains(func_name)
         }
-        return "ERROR_IN_DEPENDENCY"
     }
 
     fun getType(slang_type: STD_TYPES): String {
-        if(standard_types.has(slang_type.toString()))
+        if (standard_types.has(slang_type.toString()))
             return standard_types.getString(slang_type.toString())
         else
             return "ERROR_IN_TYPES"
     }
 }
 
-class TypeConverter(private val type: STD_TYPES): Constructable {
+class TypeConverter(private val type: STD_TYPES) : Constructable {
     override fun construct(): String {
         return PatternsLoader.getType(type)
     }

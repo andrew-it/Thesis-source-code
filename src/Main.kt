@@ -1,10 +1,7 @@
-// TODO the table of correspondence between SLang and C standard functions
-// FIXME: Incorrect function
-
 fun main(args: Array<String>) {
     // Print
     val print_lex = Lexemes(
-            EXPR_TYPES.FUNC_NAME, SymbolicSeq("pgrinf"),
+            EXPR_TYPES.FUNC_NAME, SymbolicSeq("printf"),
             EXPR_TYPES.PARAMS, StrValue(SymbolicSeq("Hello world!"))
     )
     val print_call = FunctionCall(print_lex)

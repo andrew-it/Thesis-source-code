@@ -1,4 +1,5 @@
-import java.util.HashSet
+import PatternsLoader.getDependency
+import java.util.*
 
 class Scope(private val construncts: Array<Patternable>) : Constructable {
     override fun construct(): String {
@@ -24,7 +25,6 @@ class Project(private val files: Array<SourceCode>) : Constructable {
 }
 
 object Dependencies : Constructable {
-    // TODO: create list of dependencies. after that, check functions in this list on adding
     private var deps_set: HashSet<Dependency> = hashSetOf()
 
     override fun construct(): String {
@@ -32,18 +32,20 @@ object Dependencies : Constructable {
     }
 
     fun addDependency(dependency: String) {
-        deps_set.add(Dependency(dependency))
+        val lib = getDependency(dependency)
+        if (lib != null)
+            deps_set.add(Dependency(lib))
     }
 }
 
 class Dependency(lexeme: Lexemes) : Patternable(lexeme) {
-    constructor(func_name: String) : this(Lexemes(
-            hashMapOf(Pair(EXPR_TYPES.LIB, SymbolicSeq(PatternsLoader.getDependency(func_name)))))
+    constructor(lib_name: String) : this(Lexemes(
+            hashMapOf(Pair(EXPR_TYPES.LIB, SymbolicSeq(lib_name))))
     )
 
     override val pattern_type = PATTERN_TYPES.DEPENDENCY
 }
 
-class EntryPoint(lexeme: Lexemes): Patternable(lexeme) {
+class EntryPoint(lexeme: Lexemes) : Patternable(lexeme) {
     override val pattern_type = PATTERN_TYPES.ENTRY_POINT
 }
