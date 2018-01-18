@@ -12,10 +12,10 @@
       "pattern": "for(INITIAL_STATE, WHILE_CONDITION, STEP_EXPR){BODY}"
     },
     "IF_CONDITION": {
-      "pattern": "if(CONDITION){BODY}"
+      "pattern": "if(CONDITION) {\nBODY\n} "
     },
     "ELSE_CONDITION": {
-      "pattern": "else{BODY}"
+      "pattern": "else {\nBODY\n}"
     },
     "ELIF_CONDITION": {
       "pattern": "else if(CONDITION){BODY}"
@@ -62,5 +62,17 @@
     "STRING": "char*",
     "INT": "int",
     "REAL": "float"
+  },
+  "standard_functions": {
+    "console_out": {
+      "name": "printf",
+      "str": "%s",
+      "int": "%d"
+    },
+    "console_in": {
+      "name": "scanf",
+      "str": "%s",
+      "int": "%d"
+    }
   }
 }

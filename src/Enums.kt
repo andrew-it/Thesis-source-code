@@ -6,7 +6,8 @@ enum class EXPR_TYPES {
     PARAMS,
     VALUE,
     VAR_NAME,
-    LIB
+    LIB,
+    CONDITION
 }
 
 enum class PATTERN_TYPES {

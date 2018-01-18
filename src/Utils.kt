@@ -35,4 +35,3 @@ class TypeConverter(private val type: STD_TYPES) : Constructable {
         return PatternsLoader.getType(type)
     }
 }
-

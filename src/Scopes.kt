@@ -1,7 +1,7 @@
 import PatternsLoader.getDependency
 import java.util.*
 
-class Scope(private val construncts: Array<Patternable>) : Constructable {
+class Scope(private val construncts: Array<Constructable>) : Constructable {
     override fun construct(): String {
         return construncts.joinToString("\n") { it.construct() }
     }

@@ -20,6 +20,10 @@ data class Lexemes(val lexemes: HashMap<EXPR_TYPES, Constructable>) {
                 type4: EXPR_TYPES, lexeme4: Constructable) : this(
             hashMapOf(Pair(type1, lexeme1), Pair(type2, lexeme2), Pair(type3, lexeme3), Pair(type4, lexeme4))
     )
+
+    fun merge(lexemes: Lexemes) {
+        this.lexemes.putAll(lexemes.lexemes)
+    }
 }
 
 open class SymbolicSeq(private val stub: String) : Constructable {
