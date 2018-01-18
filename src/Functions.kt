@@ -12,6 +12,6 @@ class FunctionDecl(lexeme: Lexemes) : Patternable(lexeme) {
 
 class Parameters(private val params: Array<SymbolicSeq>) : Constructable {
     override fun construct(): String {
-        return params.joinToString(",") { it.construct() }
+        return params.joinToString(", ") { it.construct() }
     }
 }

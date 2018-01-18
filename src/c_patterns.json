@@ -27,6 +27,10 @@
       "signature_delimiter": ",",
       "pattern": "\nRET_TYPE FUNC_NAME(SIGNATURE){\nBODY\n}"
     },
+    "ENTRY_POINT": {
+      "signature_delimiter": ",",
+      "pattern": "\nRET_TYPE FUNC_NAME(SIGNATURE){\nBODY\n}"
+    },
     "FUNC_CALL": {
       "signature_delimiter": ",",
       "pattern": "FUNC_NAME(PARAMS);"

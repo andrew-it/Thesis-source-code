@@ -43,3 +43,7 @@ class Dependency(lexeme: Lexemes) : Patternable(lexeme) {
 
     override val pattern_type = PATTERN_TYPES.DEPENDENCY
 }
+
+class EntryPoint(lexeme: Lexemes): Patternable(lexeme) {
+    override val pattern_type = PATTERN_TYPES.ENTRY_POINT
+}

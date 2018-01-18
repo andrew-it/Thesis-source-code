@@ -1,5 +1,5 @@
-// TODO entry point???
 // TODO the table of correspondence between SLang and C standard functions
+// FIXME: Incorrect function
 
 fun main(args: Array<String>) {
     // Print
@@ -11,11 +11,13 @@ fun main(args: Array<String>) {
     // Main
     val main_lex = Lexemes(
             EXPR_TYPES.FUNC_NAME, SymbolicSeq("main"),
-            EXPR_TYPES.SIGNATURE, Parameters(arrayOf(SymbolicSeq(""))),
+            EXPR_TYPES.SIGNATURE, Parameters(
+            arrayOf(SymbolicSeq("int argc"),
+                    SymbolicSeq("char **argv"))),
             EXPR_TYPES.BODY, Scope(arrayOf(print_call)),
             EXPR_TYPES.RET_TYPE, SymbolicSeq("int")
     )
-    val main_decl = FunctionDecl(main_lex)
+    val main_decl = EntryPoint(main_lex)
     // Str vars
     val str_val = VarName("strVariable")
     val str_val_lex = Lexemes(
