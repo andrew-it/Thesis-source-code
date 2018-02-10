@@ -12,16 +12,16 @@
       "pattern": "for(INITIAL_STATE, WHILE_CONDITION, STEP_EXPR){BODY}"
     },
     "IF_CONDITION": {
-      "pattern": "if(CONDITION) {\nBODY\n} "
+      "pattern": "if(CONDITION){\nBODY\n}"
     },
     "ELSE_CONDITION": {
-      "pattern": "else {\nBODY\n}"
+      "pattern": "else{\nBODY\n}"
     },
     "ELIF_CONDITION": {
       "pattern": "else if(CONDITION){BODY}"
     },
     "TERNARY": {
-      "pattern": "CONDITION:TRUE?FALSE;"
+      "pattern": "CONDITION?TRUE:FALSE;"
     },
     "FUNC_DECL": {
       "signature_delimiter": ",",

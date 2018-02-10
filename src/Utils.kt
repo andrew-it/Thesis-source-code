@@ -35,3 +35,10 @@ class TypeConverter(private val type: STD_TYPES) : Constructable {
         return PatternsLoader.getType(type)
     }
 }
+
+fun cleanStr(str: String): String {
+    var tmpStr = str
+    tmpStr = tmpStr.replace("\n", "")
+    tmpStr = tmpStr.replace("\t", "")
+    return tmpStr
+}
