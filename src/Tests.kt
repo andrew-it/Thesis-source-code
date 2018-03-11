@@ -80,8 +80,8 @@ internal class FunctionDeclarationTest {
                 EXPR_TYPES.FUNC_NAME, SymbolicSeq("main"),
                 EXPR_TYPES.SIGNATURE, Parameters(
                 arrayOf(
-                        SignatureParam(VarName("argc"), ReturnType(STD_TYPES.INT)),
-                        SignatureParam(VarName("**argv"), ReturnType(STD_TYPES.CHAR)))),
+                        SignatureParam(VarName("argc"), TypeAlias(STD_TYPES.INT)),
+                        SignatureParam(VarName("**argv"), TypeAlias(STD_TYPES.CHAR)))),
                 EXPR_TYPES.BODY, Scope(arrayOf(SymbolicSeq("BODY"))),
                 EXPR_TYPES.RET_TYPE, SymbolicSeq("int")
         )

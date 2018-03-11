@@ -49,13 +49,17 @@ class CollectionOfFuncPrototypes(val collectionOfPrototypes: Array<FunctionProto
     }
 }
 
-class Parameters(private val params: Array<SignatureParam>) : Constructable {
+class Parameters(private var params: Array<SignatureParam>) : Constructable {
     override fun construct(): String {
         return params.joinToString(", ") { it.construct() }
     }
+
+    fun addParameter(param: SignatureParam) {
+        params = arrayOf(param) + params
+    }
 }
 
-class SignatureParam(val name: VarName, val returnType: ReturnType) : Constructable {
+class SignatureParam(val name: VarName, val returnType: TypeAlias) : Constructable {
     override fun construct(): String {
         return returnType.construct() + " " + name.construct()
     }

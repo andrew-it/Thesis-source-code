@@ -4,9 +4,11 @@ open class SomeTypeValue(lexeme: Lexemes) : Patternable(lexeme) {
 
 class VarName(name: String) : SymbolicSeq(name)
 
-class ReturnType(val type: STD_TYPES) : Constructable {
+class TypeAlias(val type: String) : Constructable {
+    constructor(std_type: STD_TYPES) : this(std_type.toString().toLowerCase())
+
     override fun construct(): String {
-        return type.toString().toLowerCase() // FIXME make sth more adequate
+        return type
     }
 }
 
