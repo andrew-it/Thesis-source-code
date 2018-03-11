@@ -7,7 +7,11 @@ enum class EXPR_TYPES {
     VALUE,
     VAR_NAME,
     LIB,
-    CONDITION
+    CONDITION,
+    TYPE_ALIAS,
+    FUNCTION_DECLARATIONS,
+    MEMBER_DECLARATIONS,
+    FUNCTION_PROT_DECLARATIONS
 }
 
 enum class PATTERN_TYPES {
@@ -22,16 +26,22 @@ enum class PATTERN_TYPES {
     FUNC_DECL,
     ENTRY_POINT,
     FUNC_CALL,
+    SIG_PARAM,
     VAR_DECL,
     VAR_ASSIGNMENT,
     EMPTY_OPERATOR,
     DEPENDENCY,
-    PARAMS
+    PARAMS,
+    CLASS_DECL,
+    HEADER_FILE,
+    FUNC_PROTOTYPE
 }
 
 enum class STD_TYPES {
     STRING,
     INT,
-    REAL
+    REAL,
+    VOID,
+    CHAR
 }
 

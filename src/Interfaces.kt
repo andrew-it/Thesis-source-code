@@ -2,7 +2,11 @@ interface Constructable {
     fun construct(): String
 }
 
-abstract class Patternable(private val lexeme: Lexemes) : Constructable {
+interface SourceCode : Constructable {
+    var filename: Constructable
+}
+
+abstract class Patternable(val lexeme: Lexemes) : Constructable {
     abstract val pattern_type: PATTERN_TYPES
 
     override fun construct(): String {
@@ -15,5 +19,16 @@ abstract class Patternable(private val lexeme: Lexemes) : Constructable {
 
     override fun toString(): String {
         return construct()
+    }
+}
+
+// TODO use it
+abstract class CollectionOfSth(val collectionOfSth: Array<Constructable>) : Constructable {
+    override fun construct(): String {
+        return collectionOfSth.joinToString("\n") { it.construct() }
+    }
+
+    fun addInstance(instance: Constructable) {
+        collectionOfSth.plus(instance)
     }
 }

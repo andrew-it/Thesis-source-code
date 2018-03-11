@@ -1,21 +1,37 @@
-open class SomeTypeValue(private val lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type = PATTERN_TYPES.VAL_INT
+open class SomeTypeValue(lexeme: Lexemes) : Patternable(lexeme) {
+    override val pattern_type = PATTERN_TYPES.VAL_INT // FIXME val_int
 }
 
-class VarName(private val name: String) : SymbolicSeq(name)
+class VarName(name: String) : SymbolicSeq(name)
 
-class StrValue(private val value: SymbolicSeq) : SomeTypeValue(Lexemes(EXPR_TYPES.VALUE, value)) {
+class ReturnType(val type: STD_TYPES) : Constructable {
+    override fun construct(): String {
+        return type.toString().toLowerCase() // FIXME make sth more adequate
+    }
+}
+
+class StrValue(value: SymbolicSeq) : SomeTypeValue(Lexemes(EXPR_TYPES.VALUE, value)) {
     override val pattern_type = PATTERN_TYPES.VAL_STR
 }
 
-class IntValue(private val value: SymbolicSeq) : SomeTypeValue(Lexemes(EXPR_TYPES.VALUE, value)) {
+class IntValue(value: SymbolicSeq) : SomeTypeValue(Lexemes(EXPR_TYPES.VALUE, value)) {
     override val pattern_type = PATTERN_TYPES.VAL_INT
 }
 
-class VarDecl(private val lexeme: Lexemes) : Patternable(lexeme) {
+class VarDecl(lexeme: Lexemes) : Patternable(lexeme) {
     override val pattern_type = PATTERN_TYPES.VAR_DECL
 }
 
-class VarAssignment(private val lexeme: Lexemes) : Patternable(lexeme) {
+class VarAssignment(lexeme: Lexemes) : Patternable(lexeme) {
     override val pattern_type = PATTERN_TYPES.VAR_ASSIGNMENT
+}
+
+class CollectionOfVariables(val collectionOfVars: Array<VarDecl>) : Constructable {
+    override fun construct(): String {
+        return collectionOfVars.joinToString("\n") { it.construct() }
+    }
+
+    fun addVar(variable: VarDecl) {
+        collectionOfVars.plus(variable)
+    }
 }

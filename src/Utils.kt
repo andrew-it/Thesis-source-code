@@ -42,3 +42,7 @@ fun cleanStr(str: String): String {
     tmpStr = tmpStr.replace("\t", "")
     return tmpStr
 }
+
+fun textWrap(str: String): String {
+    return "\n========\t$str\t========\n"
+}

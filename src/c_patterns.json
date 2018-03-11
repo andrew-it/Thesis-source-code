@@ -35,6 +35,9 @@
       "signature_delimiter": ",",
       "pattern": "FUNC_NAME(PARAMS);"
     },
+    "SIG_PARAM": {
+      "pattern": "RET_TYPE VAR_NAME"
+    },
     "VAR_DECL": {
       "pattern": "RET_TYPE VAR_NAME;"
     },
@@ -52,6 +55,16 @@
     },
     "VAL_INT": {
       "pattern": "VALUE"
+    },
+    "HEADER_FILE": {
+      "pattern": "#ifndef TYPE_ALIAS_DEF\n#define TYPE_ALIAS_DEF\ntypedef struct {\nMEMBER_DECLARATIONS\n} TYPE_ALIAS; FUNCTION_PROT_DECLARATIONS\n#endif"
+    },
+    "CLASS_DECL": {
+      "pattern": "#include \"TYPE_ALIAS.h\"\nFUNCTION_DECLARATIONS"
+    },
+    "FUNC_PROTOTYPE": {
+      "signature_delimiter": ",",
+      "pattern": "\nRET_TYPE FUNC_NAME(SIGNATURE);"
     }
   },
   "dependencies": {
