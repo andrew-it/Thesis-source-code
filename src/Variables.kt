@@ -28,12 +28,12 @@ class VarAssignment(lexeme: Lexemes) : Patternable(lexeme) {
     override val patternType = PATTERN_TYPES.VAR_ASSIGNMENT
 }
 
-class CollectionOfVariables(val collectionOfVars: Array<VarDecl>) : Constructable {
+class CollectionOfVariables(var collectionOfVars: Array<VarDecl>) : Constructable {
     override fun construct(): String {
         return collectionOfVars.joinToString("\n") { it.construct() }
     }
 
     fun addVar(variable: VarDecl) {
-        collectionOfVars.plus(variable)
+        collectionOfVars = collectionOfVars.plus(variable)
     }
 }

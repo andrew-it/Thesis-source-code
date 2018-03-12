@@ -61,7 +61,7 @@ class Class(private val lexeme: Lexemes) : SourceCode {
                 val signature = method.lexeme.lexemes[EXPR_TYPES.SIGNATURE]
                 val funcName = method.lexeme.lexemes[EXPR_TYPES.FUNC_NAME]
                 if (signature is Parameters) {
-                    signature.addParameter(SignatureParamConstPointer(thisPointerName, TypeAlias(typeAlias)))
+                    signature.addParameter(SignatureParamConstPointer(thisPointerName, ClassTypeAlias(typeAlias)))
                 } else {
                     throw NotAllowedLexeme("Broken signature in class '$filename', function '$funcName'")
                 }

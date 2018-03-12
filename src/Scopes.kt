@@ -30,6 +30,10 @@ class Project : Constructable {
     override fun construct(): String {
         return sourceCodeFiles.joinToString("\n") { it.construct() }
     }
+
+    override fun toString(): String {
+        return construct()
+    }
 }
 
 object Dependencies : Constructable {

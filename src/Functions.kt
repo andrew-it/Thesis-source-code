@@ -18,13 +18,13 @@ class FunctionPrototype(lexeme: Lexemes) : FunctionDecl(lexeme) {
     override val patternType = PATTERN_TYPES.FUNC_PROTOTYPE
 }
 
-class CollectionOfFunctions(val collectionOfFunctions: Array<FunctionDecl>) : Constructable {
+class CollectionOfFunctions(var collectionOfFunctions: Array<FunctionDecl>) : Constructable {
     override fun construct(): String {
         return collectionOfFunctions.joinToString("\n") { it.construct() }
     }
 
     fun addFunction(func: FunctionDecl) {
-        collectionOfFunctions.plus(func)
+        collectionOfFunctions = collectionOfFunctions.plus(func)
     }
 
     fun convertToProrotypesCollection(): CollectionOfFuncPrototypes {
@@ -39,13 +39,13 @@ class CollectionOfFunctions(val collectionOfFunctions: Array<FunctionDecl>) : Co
     }
 }
 
-class CollectionOfFuncPrototypes(val collectionOfPrototypes: Array<FunctionPrototype>) : Constructable {
+class CollectionOfFuncPrototypes(private var collectionOfPrototypes: Array<FunctionPrototype>) : Constructable {
     override fun construct(): String {
         return collectionOfPrototypes.joinToString("\n") { it.construct() }
     }
 
     fun addFuncPrototype(func: FunctionPrototype) {
-        collectionOfPrototypes.plus(func)
+        collectionOfPrototypes = collectionOfPrototypes.plus(func)
     }
 }
 
