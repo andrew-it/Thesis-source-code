@@ -65,15 +65,13 @@ class Class(private val lexeme: Lexemes) : SourceCode {
                 } else {
                     throw NotAllowedLexeme("Broken signature in class '$filename', function '$funcName'")
                 }
-
             }
         }
     }
 
-    val header = _HeaderFile(lexeme, filename)
-    val source = _ClassFile(lexeme, filename)
-    // TODO selfPointer and super pointer
     override fun construct(): String {
+        val header = _HeaderFile(lexeme, filename)
+        val source = _ClassFile(lexeme, filename)
         incertSelfPointerToFuntions()
         return textWrap(filename.construct() + ".c") + "\n" + source.construct() +
                 textWrap(filename.construct() + ".h") + "\n" + header.construct()
