@@ -37,10 +37,7 @@ class TypeConverter(private val type: STD_TYPES) : Constructable {
 }
 
 fun cleanStr(str: String): String {
-    var tmpStr = str
-    tmpStr = tmpStr.replace("\n", "")
-    tmpStr = tmpStr.replace("\t", "")
-    return tmpStr
+    return str.replace("\n", "").replace("\t", "")
 }
 
 fun textWrap(str: String): String {
