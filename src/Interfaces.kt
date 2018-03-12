@@ -21,14 +21,3 @@ abstract class Patternable(val lexeme: Lexemes) : Constructable {
         return construct()
     }
 }
-
-// TODO use it
-abstract class CollectionOfSth(var collectionOfSth: Array<Constructable>) : Constructable {
-    override fun construct(): String {
-        return collectionOfSth.joinToString("\n") { it.construct() }
-    }
-
-    fun addInstance(instance: Constructable) {
-        collectionOfSth = collectionOfSth.plus(instance)
-    }
-}

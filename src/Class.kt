@@ -72,6 +72,7 @@ class Class(private val lexeme: Lexemes) : SourceCode {
     override fun construct(): String {
         val header = _HeaderFile(lexeme, filename)
         val source = _ClassFile(lexeme, filename)
+        Dependencies.addDependency(typeAlias)
         incertSelfPointerToFuntions()
         return textWrap(filename.construct() + ".c") + "\n" + source.construct() +
                 textWrap(filename.construct() + ".h") + "\n" + header.construct()
