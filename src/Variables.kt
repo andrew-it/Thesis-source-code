@@ -1,10 +1,10 @@
 open class SomeTypeValue(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type = PATTERN_TYPES.VAL_INT // FIXME val_int
+    override val patternType = PATTERN_TYPES.VAL_INT // FIXME val_int
 }
 
 class VarName(name: String) : SymbolicSeq(name)
 
-class TypeAlias(val type: String) : Constructable {
+open class TypeAlias(val type: String) : Constructable {
     constructor(std_type: STD_TYPES) : this(std_type.toString().toLowerCase())
 
     override fun construct(): String {
@@ -13,19 +13,19 @@ class TypeAlias(val type: String) : Constructable {
 }
 
 class StrValue(value: SymbolicSeq) : SomeTypeValue(Lexemes(EXPR_TYPES.VALUE, value)) {
-    override val pattern_type = PATTERN_TYPES.VAL_STR
+    override val patternType = PATTERN_TYPES.VAL_STR
 }
 
 class IntValue(value: SymbolicSeq) : SomeTypeValue(Lexemes(EXPR_TYPES.VALUE, value)) {
-    override val pattern_type = PATTERN_TYPES.VAL_INT
+    override val patternType = PATTERN_TYPES.VAL_INT
 }
 
 class VarDecl(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type = PATTERN_TYPES.VAR_DECL
+    override val patternType = PATTERN_TYPES.VAR_DECL
 }
 
 class VarAssignment(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type = PATTERN_TYPES.VAR_ASSIGNMENT
+    override val patternType = PATTERN_TYPES.VAR_ASSIGNMENT
 }
 
 class CollectionOfVariables(val collectionOfVars: Array<VarDecl>) : Constructable {

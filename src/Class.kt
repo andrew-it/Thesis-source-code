@@ -54,7 +54,7 @@ class Class(private val lexeme: Lexemes) : SourceCode {
             for (method in methodsDeclarations.collectionOfFunctions) {
                 val signature = method.lexeme.lexemes[EXPR_TYPES.SIGNATURE]
                 if (signature is Parameters) {
-                    signature.addParameter(SignatureParam(VarName("self"), TypeAlias(typeAlias)))
+                    signature.addParameter(SignatureParamConstPointer(VarName("this"), TypeAlias(typeAlias)))
                 } else {
                     // TODO Throwable
 //                    throw PIZDEC
@@ -75,4 +75,20 @@ class Class(private val lexeme: Lexemes) : SourceCode {
 
 }
 
-class ClassTypeAlias(private val stub: String) : SymbolicSeq(stub)
+class ClassTypeAlias(type: String) : TypeAlias(type)
+
+class _HeaderFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
+    init {
+        this.filename = SymbolicSeq(this.filename.construct() + ".h")
+    }
+
+    override val patternType = PATTERN_TYPES.HEADER_FILE
+}
+
+class _ClassFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
+    init {
+        this.filename = SymbolicSeq(this.filename.construct() + ".c")
+    }
+
+    override val patternType = PATTERN_TYPES.CLASS_DECL
+}

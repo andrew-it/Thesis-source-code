@@ -38,8 +38,17 @@
     "SIG_PARAM": {
       "pattern": "RET_TYPE VAR_NAME"
     },
+    "SIG_PARAM_POINTER": {
+      "pattern": "RET_TYPE *VAR_NAME"
+    },
+    "SIG_PARAM_CONST_POINTER": {
+      "pattern": "RET_TYPE *const VAR_NAME"
+    },
     "VAR_DECL": {
       "pattern": "RET_TYPE VAR_NAME;"
+    },
+    "VAR_DECL_POINTER": {
+      "pattern": "RET_TYPE *VAR_NAME;"
     },
     "VAR_ASSIGNMENT": {
       "pattern": "VAR_NAME = VALUE;"
@@ -57,7 +66,7 @@
       "pattern": "VALUE"
     },
     "HEADER_FILE": {
-      "pattern": "#ifndef TYPE_ALIAS_DEF\n#define TYPE_ALIAS_DEF\ntypedef struct {\nMEMBER_DECLARATIONS\n} TYPE_ALIAS; FUNCTION_PROT_DECLARATIONS\n#endif"
+      "pattern": "#ifndef TYPE_ALIAS_H\n#define TYPE_ALIAS_H\ntypedef struct {\nMEMBER_DECLARATIONS\n} TYPE_ALIAS; FUNCTION_PROT_DECLARATIONS\n#endif"
     },
     "CLASS_DECL": {
       "pattern": "#include \"TYPE_ALIAS.h\"\nFUNCTION_DECLARATIONS"

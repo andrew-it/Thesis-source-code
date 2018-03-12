@@ -7,14 +7,14 @@ interface SourceCode : Constructable {
 }
 
 abstract class Patternable(val lexeme: Lexemes) : Constructable {
-    abstract val pattern_type: PATTERN_TYPES
+    abstract val patternType: PATTERN_TYPES
 
     override fun construct(): String {
-        var tmp_pattern = PatternsLoader.getPatternByType(pattern_type)
+        var tmpPattern = PatternsLoader.getPatternByType(patternType)
         for (le in lexeme.lexemes.keys)
-            tmp_pattern = tmp_pattern.replace(le.toString(),
+            tmpPattern = tmpPattern.replace(le.toString(),
                     lexeme.lexemes[le]!!.construct()) // FIXME !!
-        return tmp_pattern
+        return tmpPattern
     }
 
     override fun toString(): String {

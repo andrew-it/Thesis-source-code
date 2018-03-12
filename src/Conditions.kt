@@ -1,13 +1,13 @@
 class _IfCondition(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type: PATTERN_TYPES = PATTERN_TYPES.IF_CONDITION
+    override val patternType: PATTERN_TYPES = PATTERN_TYPES.IF_CONDITION
 }
 
 class _ElseCondition(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type: PATTERN_TYPES = PATTERN_TYPES.ELSE_CONDITION
+    override val patternType: PATTERN_TYPES = PATTERN_TYPES.ELSE_CONDITION
 }
 
 class TernaryCondition(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type: PATTERN_TYPES = PATTERN_TYPES.TERNARY
+    override val patternType: PATTERN_TYPES = PATTERN_TYPES.TERNARY
 }
 
 class IfCondition(val Cond: Lexemes, val If: Lexemes, val Else: Lexemes? = null) : Constructable {

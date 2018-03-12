@@ -13,44 +13,9 @@ class Scope(private val construncts: Array<Constructable>) : Constructable {
 
 class SourceCodeFile(private val scopes: Array<Scope>, override var filename: Constructable) : SourceCode {
     override fun construct(): String {
-        return Dependencies.construct() +
+        return textWrap(filename.construct()) + "\n" + Dependencies.construct() +
                 scopes.joinToString("\n") { it.construct() }
     }
-}
-
-class ClassDeclaration(lexeme: Lexemes) : Constructable {
-    /**
-     * lexeme contain: classname, methods array, members array
-     * */
-    val className = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]
-    val methodsArray = lexeme.lexemes[EXPR_TYPES.FUNCTION_DECLARATIONS]
-    val membersArray = lexeme.lexemes[EXPR_TYPES.MEMBER_DECLARATIONS]
-    override fun construct(): String {
-        // FIXME !!
-        val classFile = _ClassFile(Lexemes(
-                EXPR_TYPES.BODY, membersArray!!,
-                EXPR_TYPES.FUNCTION_DECLARATIONS, methodsArray!!,
-                EXPR_TYPES.TYPE_ALIAS, className!!
-        ),
-                className)
-        return "TODO"
-    }
-}
-
-class _HeaderFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
-    init {
-        this.filename = SymbolicSeq(this.filename.construct() + ".h")
-    }
-
-    override val pattern_type = PATTERN_TYPES.HEADER_FILE
-}
-
-class _ClassFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
-    init {
-        this.filename = SymbolicSeq(this.filename.construct() + ".c")
-    }
-
-    override val pattern_type = PATTERN_TYPES.CLASS_DECL
 }
 
 class Project : Constructable {
@@ -63,9 +28,7 @@ class Project : Constructable {
     }
 
     override fun construct(): String {
-        return sourceCodeFiles.joinToString("\n") {
-            textWrap(it.filename.construct()) + "\n" + it.construct()
-        }
+        return sourceCodeFiles.joinToString("\n") { it.construct() }
     }
 }
 
@@ -88,9 +51,9 @@ class Dependency(lexeme: Lexemes) : Patternable(lexeme) {
             hashMapOf(Pair(EXPR_TYPES.LIB, SymbolicSeq(lib_name))))
     )
 
-    override val pattern_type = PATTERN_TYPES.DEPENDENCY
+    override val patternType = PATTERN_TYPES.DEPENDENCY
 }
 
 class EntryPoint(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type = PATTERN_TYPES.ENTRY_POINT
+    override val patternType = PATTERN_TYPES.ENTRY_POINT
 }

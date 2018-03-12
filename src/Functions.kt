@@ -3,19 +3,19 @@ class FunctionCall(lexeme: Lexemes) : Patternable(lexeme) {
         Dependencies.addDependency(lexeme.lexemes[EXPR_TYPES.FUNC_NAME].toString())
     }
 
-    override val pattern_type = PATTERN_TYPES.FUNC_CALL
+    override val patternType = PATTERN_TYPES.FUNC_CALL
 }
 
-class FunctionDecl(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type = PATTERN_TYPES.FUNC_DECL
+open class FunctionDecl(lexeme: Lexemes) : Patternable(lexeme) {
+    override val patternType = PATTERN_TYPES.FUNC_DECL
 
     fun getLexemes(): Lexemes {
         return lexeme
     }
 }
 
-class FunctionPrototype(lexeme: Lexemes) : Patternable(lexeme) {
-    override val pattern_type = PATTERN_TYPES.FUNC_PROTOTYPE
+class FunctionPrototype(lexeme: Lexemes) : FunctionDecl(lexeme) {
+    override val patternType = PATTERN_TYPES.FUNC_PROTOTYPE
 }
 
 class CollectionOfFunctions(val collectionOfFunctions: Array<FunctionDecl>) : Constructable {
@@ -59,8 +59,12 @@ class Parameters(private var params: Array<SignatureParam>) : Constructable {
     }
 }
 
-class SignatureParam(val name: VarName, val returnType: TypeAlias) : Constructable {
-    override fun construct(): String {
-        return returnType.construct() + " " + name.construct()
-    }
+open class SignatureParam(name: VarName, returnType: TypeAlias) : Patternable(
+        Lexemes(EXPR_TYPES.RET_TYPE, returnType, EXPR_TYPES.VAR_NAME, name)) {
+    override val patternType = PATTERN_TYPES.SIG_PARAM
+}
+
+class SignatureParamConstPointer(name: VarName, returnType: TypeAlias) :
+        SignatureParam(name, returnType) {
+    override val patternType = PATTERN_TYPES.SIG_PARAM_CONST_POINTER
 }
