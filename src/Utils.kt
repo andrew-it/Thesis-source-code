@@ -9,6 +9,7 @@ object PatternsLoader {
     private val dependencies: JSONObject = json_object.getJSONObject("dependencies")
     private val standard_types: JSONObject = json_object.getJSONObject("standard_types")
     private val patterns: JSONObject = json_object.getJSONObject("patterns")
+    private val standard_functions: JSONObject = json_object.getJSONObject("standard_functions")
 
 
     fun getPatternByType(type: PATTERN_TYPES): String {
@@ -23,10 +24,14 @@ object PatternsLoader {
     }
 
     fun getType(slang_type: STD_TYPES): String {
-        if (standard_types.has(slang_type.toString()))
-            return standard_types.getString(slang_type.toString())
+        return if (standard_types.has(slang_type.toString()))
+            standard_types.getString(slang_type.toString())
         else
-            return "ERROR_IN_TYPES"
+            "ERROR_IN_TYPES"
+    }
+
+    fun getStdFuncName(func_name: STD_FUNCTIONS): String {
+        return standard_functions.getJSONObject(func_name.toString().toLowerCase()).getString("name")
     }
 }
 

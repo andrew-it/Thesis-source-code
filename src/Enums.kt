@@ -48,3 +48,8 @@ enum class STD_TYPES {
     CHAR
 }
 
+enum class STD_FUNCTIONS {
+    CONSOLE_OUT,
+    CONSOLE_IN
+}
+

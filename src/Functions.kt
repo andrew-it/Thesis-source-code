@@ -1,4 +1,4 @@
-class FunctionCall(lexeme: Lexemes) : Patternable(lexeme) {
+open class FunctionCall(lexeme: Lexemes) : Patternable(lexeme) {
     init {
         Dependencies.addDependency(lexeme.lexemes[EXPR_TYPES.FUNC_NAME].toString())
     }

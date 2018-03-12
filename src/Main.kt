@@ -4,11 +4,7 @@
 
 fun main(args: Array<String>) {
     // Print
-    val printLex = Lexemes(
-            EXPR_TYPES.FUNC_NAME, SymbolicSeq("printf"),
-            EXPR_TYPES.PARAMS, StrValue(SymbolicSeq("Hello world!"))
-    )
-    val printCall = FunctionCall(printLex)
+    val printCall = StandardOutput("Hello world!")
     // Str vars
     val strVal = VarName("strVariable")
     val strValLex = Lexemes(
