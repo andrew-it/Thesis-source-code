@@ -5,7 +5,7 @@ open class SomeTypeValue(lexeme: Lexemes) : Patternable(lexeme) {
 class VarName(name: String) : SymbolicSeq(name)
 
 open class TypeAlias(val type: String) : Constructable {
-    constructor(std_type: STD_TYPES) : this(std_type.toString().toLowerCase())
+    constructor(std_type: STD_TYPES) : this(TypeConverter(std_type).construct())
 
     override fun construct(): String {
         return type

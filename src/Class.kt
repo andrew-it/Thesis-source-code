@@ -31,13 +31,18 @@
  **/
 
 class Class(private val lexeme: Lexemes) : SourceCode {
-    // FIXME !!
-    override var filename = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]!!
+    init {
+        if (lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS] == null)
+            throw NotAllowedLexeme("Class haven't filename")
+    }
+
+    override var filename = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]!! // FIXME !!
     private val typeAlias = filename.construct()
     private val superName = VarName("_super")
     private val thisPointerName = VarName("this")
 
-    fun addSuper(superTypeAlias: ClassTypeAlias) {
+
+    private fun addSuper(superTypeAlias: ClassTypeAlias) {
         val memberDeclarations = lexeme.lexemes[EXPR_TYPES.MEMBER_DECLARATIONS]
 
         if (memberDeclarations != null && memberDeclarations is CollectionOfVariables) {
@@ -48,7 +53,7 @@ class Class(private val lexeme: Lexemes) : SourceCode {
         }
     }
 
-    fun incertSelfPointerToFuntions() {
+    private fun incertSelfPointerToFuntions() {
         val methodsDeclarations = lexeme.lexemes[EXPR_TYPES.FUNCTION_DECLARATIONS]
 
         if (methodsDeclarations != null && methodsDeclarations is CollectionOfFunctions) {

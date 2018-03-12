@@ -83,7 +83,9 @@
   "standard_types": {
     "STRING": "char*",
     "INT": "int",
-    "REAL": "float"
+    "REAL": "float",
+    "CHAR": "char",
+    "VOID": "void"
   },
   "standard_functions": {
     "console_out": {
