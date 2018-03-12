@@ -33,8 +33,9 @@
 class Class(private val lexeme: Lexemes) : SourceCode {
     // FIXME !!
     override var filename = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]!!
-    val typeAlias = filename.construct()
-    val superName = VarName("_super")
+    private val typeAlias = filename.construct()
+    private val superName = VarName("_super")
+    private val thisPointerName = VarName("this")
 
     fun addSuper(superTypeAlias: ClassTypeAlias) {
         val memberDeclarations = lexeme.lexemes[EXPR_TYPES.MEMBER_DECLARATIONS]
@@ -53,11 +54,11 @@ class Class(private val lexeme: Lexemes) : SourceCode {
         if (methodsDeclarations != null && methodsDeclarations is CollectionOfFunctions) {
             for (method in methodsDeclarations.collectionOfFunctions) {
                 val signature = method.lexeme.lexemes[EXPR_TYPES.SIGNATURE]
+                val funcName = method.lexeme.lexemes[EXPR_TYPES.FUNC_NAME]
                 if (signature is Parameters) {
-                    signature.addParameter(SignatureParamConstPointer(VarName("this"), TypeAlias(typeAlias)))
+                    signature.addParameter(SignatureParamConstPointer(thisPointerName, TypeAlias(typeAlias)))
                 } else {
-                    // TODO Throwable
-//                    throw PIZDEC
+                    throw NotAllowedLexeme("Broken signature in class '$filename', function '$funcName'")
                 }
 
             }

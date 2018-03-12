@@ -1,0 +1,1 @@
+class NotAllowedLexeme(message: String) : Throwable(message)
