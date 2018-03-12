@@ -1,0 +1,99 @@
+{
+  "version": 0.1,
+  "language": "JavaScipt",
+  "patterns": {
+    "STR_VAR": {
+      "pattern": "\""
+    },
+    "CHAR_VAR": {
+      "pattern": "'"
+    },
+    "LOOP": {
+      "pattern": "for(INITIAL_STATE, WHILE_CONDITION, STEP_EXPR){BODY}"
+    },
+    "IF_CONDITION": {
+      "pattern": "if(CONDITION){\nBODY\n}"
+    },
+    "ELSE_CONDITION": {
+      "pattern": "else{\nBODY\n}"
+    },
+    "ELIF_CONDITION": {
+      "pattern": "else if(CONDITION){BODY}"
+    },
+    "TERNARY": {
+      "pattern": "CONDITION?TRUE:FALSE;"
+    },
+    "FUNC_DECL": {
+      "signature_delimiter": ",",
+      "pattern": "function FUNC_NAME(SIGNATURE){BODY}"
+    },
+    "ENTRY_POINT": {
+      "signature_delimiter": ",",
+      "pattern": "BODY"
+    },
+    "FUNC_CALL": {
+      "signature_delimiter": ",",
+      "pattern": "FUNC_NAME(PARAMS)"
+    },
+    "SIG_PARAM": {
+      "pattern": "VAR_NAME"
+    },
+    "SIG_PARAM_POINTER": {
+      "pattern": "VAR_NAME"
+    },
+    "SIG_PARAM_CONST_POINTER": {
+      "pattern": "VAR_NAME"
+    },
+    "VAR_DECL": {
+      "pattern": "var VAR_NAME;"
+    },
+    "VAR_DECL_POINTER": {
+      "pattern": "var VAR_NAME;"
+    },
+    "VAR_ASSIGNMENT": {
+      "pattern": "VAR_NAME = VALUE;"
+    },
+    "EMPTY_OPERATOR": {
+      "operator": ";"
+    },
+    "DEPENDENCY": {
+      "pattern": "# LIB"
+    },
+    "VAL_STR": {
+      "pattern": "\"VALUE\""
+    },
+    "VAL_INT": {
+      "pattern": "VALUE"
+    },
+    "HEADER_FILE": {
+      "pattern": "var TYPE_ALIAS = {MEMBER_DECLARATIONS\nFUNCTION_PROT_DECLARATIONS\n};"
+    },
+    "CLASS_DECL": {
+      "pattern": "# TYPE_ALIAS | FUNCTION_DECLARATIONS"
+    },
+    "FUNC_PROTOTYPE": {
+      "signature_delimiter": ",",
+      "pattern": "# FUNC_NAME | SIGNATURE)"
+    }
+  },
+  "dependencies": {},
+  "standard_types": {
+    "STRING": "",
+    "INT": "",
+    "REAL": "",
+    "CHAR": "",
+    "VOID": ""
+  },
+  "standard_functions": {
+    "console_out": {
+      "name": "console.log",
+      "str": "%s",
+      "int": "%d"
+    },
+    "console_in": {
+      "name": "scanf",
+      "str": "%s",
+      "int": "%d"
+    }
+  }
+}
