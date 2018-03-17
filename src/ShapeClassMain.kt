@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
             EXPR_TYPES.MEMBER_DECLARATIONS,
             CollectionOfVariables(arrayOf(shapeXVar, shapeYVar)),
             EXPR_TYPES.FUNCTION_PROT_DECLARATIONS,
-            shapeMethodCollection.convertToProrotypesCollection(),
+            shapeMethodCollection.convertToPrototypesCollection(),
             EXPR_TYPES.FUNCTION_DECLARATIONS,
             shapeMethodCollection
     )

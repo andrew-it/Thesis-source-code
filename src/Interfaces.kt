@@ -11,9 +11,12 @@ abstract class Patternable(val lexeme: Lexemes) : Constructable {
 
     override fun construct(): String {
         var tmpPattern = PatternsLoader.getPatternByType(patternType)
-        for (le in lexeme.lexemes.keys)
-            tmpPattern = tmpPattern.replace(le.toString(),
-                    lexeme.lexemes[le]!!.construct()) // FIXME !!
+        for (le in lexeme.lexemes.keys) {
+            val constructableLexeme = lexeme.lexemes[le]
+            if (constructableLexeme is Constructable)
+                tmpPattern = tmpPattern.replace(le.toString(),
+                        constructableLexeme.construct())
+        }
         return tmpPattern
     }
 

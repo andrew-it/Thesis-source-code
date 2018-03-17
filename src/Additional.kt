@@ -26,7 +26,7 @@ data class Lexemes(val lexemes: HashMap<EXPR_TYPES, Constructable>) {
     }
 
     fun addLexeme(type: EXPR_TYPES, lexeme: Constructable) {
-        this.lexemes.put(type, lexeme)
+        this.lexemes[type] = lexeme
     }
 }
 

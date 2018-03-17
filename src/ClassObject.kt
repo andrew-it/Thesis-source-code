@@ -40,7 +40,7 @@ fun main(args: Array<String>) {
             EXPR_TYPES.MEMBER_DECLARATIONS,
             CollectionOfVariables(emptyArray()),
             EXPR_TYPES.FUNCTION_PROT_DECLARATIONS,
-            objectMethodCollection.convertToProrotypesCollection(),
+            objectMethodCollection.convertToPrototypesCollection(),
             EXPR_TYPES.FUNCTION_DECLARATIONS,
             objectMethodCollection
     )

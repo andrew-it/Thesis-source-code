@@ -27,7 +27,7 @@ class CollectionOfFunctions(var collectionOfFunctions: Array<FunctionDecl>) : Co
         collectionOfFunctions = collectionOfFunctions.plus(func)
     }
 
-    fun convertToProrotypesCollection(): CollectionOfFuncPrototypes {
+    fun convertToPrototypesCollection(): CollectionOfFuncPrototypes {
         var tmpArray: Array<FunctionPrototype> = emptyArray()
 
         for (func in collectionOfFunctions) {
