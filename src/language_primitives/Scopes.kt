@@ -4,9 +4,9 @@ import additional.*
 import additional.PatternsLoader.getDependency
 import java.util.*
 
-class Scope(private val construncts: Array<Constructable>) : Constructable {
+class Scope(private val constructs: Array<Constructable>) : Constructable {
     override fun construct(): String {
-        return construncts.joinToString("\n") { it.construct() }
+        return constructs.joinToString("\n") { it.construct() }
     }
 
     override fun toString(): String {

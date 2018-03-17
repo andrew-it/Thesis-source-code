@@ -16,20 +16,20 @@ internal class UtilsKtTest {
 
 
 internal class ConditionalTest {
-    lateinit var trueSymbol: SymbolicSeq
-    lateinit var falseSymbol: SymbolicSeq
-    lateinit var int_val: VarName
-    lateinit var true_cond: Scope
-    lateinit var false_cond: Scope
+    private lateinit var trueSymbol: SymbolicSeq
+    private lateinit var falseSymbol: SymbolicSeq
+    private lateinit var intValue: VarName
+    private lateinit var trueCond: Scope
+    private lateinit var falseCond: Scope
 
     @BeforeEach
     fun setUp() {
         trueSymbol = SymbolicSeq("TRUE")
         falseSymbol = SymbolicSeq("FALSE")
-        int_val = VarName("CONDITION")
+        intValue = VarName("CONDITION")
 
-        true_cond = Scope(arrayOf(trueSymbol))
-        false_cond = Scope(arrayOf(falseSymbol))
+        trueCond = Scope(arrayOf(trueSymbol))
+        falseCond = Scope(arrayOf(falseSymbol))
     }
 
     @Test
@@ -37,9 +37,9 @@ internal class ConditionalTest {
         val eq = "if(CONDITION){TRUE}else{FALSE}"
 
         val condition = IfCondition(
-                Lexemes(EXPR_TYPES.CONDITION, int_val),
-                Lexemes(EXPR_TYPES.BODY, true_cond),
-                Lexemes(EXPR_TYPES.BODY, false_cond))
+                Lexemes(EXPR_TYPES.CONDITION, intValue),
+                Lexemes(EXPR_TYPES.BODY, trueCond),
+                Lexemes(EXPR_TYPES.BODY, falseCond))
 
         assertEquals(eq, cleanStr(condition.construct()))
     }
@@ -49,8 +49,8 @@ internal class ConditionalTest {
         val eq = "if(CONDITION){TRUE}"
 
         val condition = IfCondition(
-                Lexemes(EXPR_TYPES.CONDITION, int_val),
-                Lexemes(EXPR_TYPES.BODY, true_cond),
+                Lexemes(EXPR_TYPES.CONDITION, intValue),
+                Lexemes(EXPR_TYPES.BODY, trueCond),
                 null)
         assertEquals(eq, cleanStr(condition.construct()))
     }
@@ -59,9 +59,9 @@ internal class ConditionalTest {
     fun ternaryOperator() {
         val eq = "CONDITION?TRUE:FALSE;"
         val condition = TernaryCondition(Lexemes(
-                EXPR_TYPES.CONDITION, int_val,
-                EXPR_TYPES.BODY, true_cond,
-                EXPR_TYPES.BODY, false_cond))
+                EXPR_TYPES.CONDITION, intValue,
+                EXPR_TYPES.BODY, trueCond,
+                EXPR_TYPES.BODY, falseCond))
 
         assertEquals(eq, cleanStr(condition.construct()))
     }
@@ -70,14 +70,14 @@ internal class ConditionalTest {
 
 
 internal class FunctionDeclarationTest {
-    lateinit var main_lex: Lexemes
-    lateinit var main_decl: EntryPoint
-    val eq = "int main(int argc, char **argv){BODY}"
+    private lateinit var mainLex: Lexemes
+    private lateinit var mainDecl: EntryPoint
+    private val eq = "int main(int argc, char **argv){BODY}"
 
 
     @BeforeEach
     fun setUp() {
-        main_lex = Lexemes(
+        mainLex = Lexemes(
                 EXPR_TYPES.FUNC_NAME, SymbolicSeq("main"),
                 EXPR_TYPES.SIGNATURE, Parameters(
                 arrayOf(
@@ -86,28 +86,28 @@ internal class FunctionDeclarationTest {
                 EXPR_TYPES.BODY, Scope(arrayOf(SymbolicSeq("BODY"))),
                 EXPR_TYPES.RET_TYPE, SymbolicSeq("int")
         )
-        main_decl = EntryPoint(main_lex)
+        mainDecl = EntryPoint(mainLex)
     }
 
     @Test
     fun funDecl() {
-        assertEquals(cleanStr(main_decl.construct()), eq)
+        assertEquals(cleanStr(mainDecl.construct()), eq)
     }
 }
 
 
 internal class VariablesTest {
-    val int_val = VarName("VAR_NAME")
+    private val intValue = VarName("VAR_NAME")
 
     @Test
     fun intVariableDeclaration() {
         val eq = "int VAR_NAME;"
 
-        val int_val_lex = Lexemes(
-                EXPR_TYPES.VAR_NAME, int_val,
+        val intValLex = Lexemes(
+                EXPR_TYPES.VAR_NAME, intValue,
                 EXPR_TYPES.RET_TYPE, TypeConverter(STD_TYPES.INT)
         )
-        val intVar = VarDecl(int_val_lex)
+        val intVar = VarDecl(intValLex)
         assertEquals(cleanStr(intVar.construct()), eq)
     }
 
@@ -115,11 +115,11 @@ internal class VariablesTest {
     fun intVarAssignment() {
         val eq = "VAR_NAME = 11;"
 
-        val int_val_ass_lex = Lexemes(
-                EXPR_TYPES.VAR_NAME, int_val,
+        val intValAssLex = Lexemes(
+                EXPR_TYPES.VAR_NAME, intValue,
                 EXPR_TYPES.VALUE, IntValue(SymbolicSeq("11"))
         )
-        val int_ass = VarAssignment(int_val_ass_lex)
-        assertEquals(cleanStr(int_ass.construct()), eq)
+        val intAss = VarAssignment(intValAssLex)
+        assertEquals(cleanStr(intAss.construct()), eq)
     }
 }

@@ -8,7 +8,7 @@ open class SomeTypeValue(lexeme: Lexemes) : Patternable(lexeme) {
 
 class VarName(name: String) : SymbolicSeq(name)
 
-open class TypeAlias(val type: String) : Constructable {
+open class TypeAlias(private val type: String) : Constructable {
     constructor(std_type: STD_TYPES) : this(TypeConverter(std_type).construct())
 
     override fun construct(): String {
@@ -32,7 +32,7 @@ class VarAssignment(lexeme: Lexemes) : Patternable(lexeme) {
     override val patternType = PATTERN_TYPES.VAR_ASSIGNMENT
 }
 
-class CollectionOfVariables(var collectionOfVars: Array<VarDecl>) : Constructable {
+class CollectionOfVariables(private var collectionOfVars: Array<VarDecl>) : Constructable {
     override fun construct(): String {
         return collectionOfVars.joinToString("\n") { it.construct() }
     }

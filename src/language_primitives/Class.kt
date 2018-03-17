@@ -57,7 +57,7 @@ class Class(private val lexeme: Lexemes) : SourceCode {
         }
     }
 
-    private fun incertSelfPointerToFuntions() {
+    private fun insertSelfPointerToFunctions() {
         val methodsDeclarations = lexeme.lexemes[EXPR_TYPES.FUNCTION_DECLARATIONS]
 
         if (methodsDeclarations != null && methodsDeclarations is CollectionOfFunctions) {
@@ -74,10 +74,10 @@ class Class(private val lexeme: Lexemes) : SourceCode {
     }
 
     override fun construct(): String {
-        val header = _HeaderFile(lexeme, filename)
-        val source = _ClassFile(lexeme, filename)
+        val header = HeaderFile(lexeme, filename)
+        val source = ClassFile(lexeme, filename)
         Dependencies.addDependency(typeAlias)
-        incertSelfPointerToFuntions()
+        insertSelfPointerToFunctions()
         return textWrap(filename.construct() + ".c") + "\n" + source.construct() +
                 textWrap(filename.construct() + ".h") + "\n" + header.construct()
     }
@@ -86,7 +86,7 @@ class Class(private val lexeme: Lexemes) : SourceCode {
 
 class ClassTypeAlias(type: String) : TypeAlias(type)
 
-class _HeaderFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
+class HeaderFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
     init {
         this.filename = SymbolicSeq(this.filename.construct() + ".h")
     }
@@ -94,7 +94,7 @@ class _HeaderFile(lexeme: Lexemes, override var filename: Constructable) : Patte
     override val patternType = PATTERN_TYPES.HEADER_FILE
 }
 
-class _ClassFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
+class ClassFile(lexeme: Lexemes, override var filename: Constructable) : Patternable(lexeme), SourceCode {
     init {
         this.filename = SymbolicSeq(this.filename.construct() + ".c")
     }

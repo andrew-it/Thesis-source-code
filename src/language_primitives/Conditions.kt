@@ -15,7 +15,7 @@ class TernaryCondition(lexeme: Lexemes) : Patternable(lexeme) {
     override val patternType: PATTERN_TYPES = PATTERN_TYPES.TERNARY
 }
 
-class IfCondition(val Cond: Lexemes, val If: Lexemes, val Else: Lexemes? = null) : Constructable {
+class IfCondition(private val Cond: Lexemes, private val If: Lexemes, private val Else: Lexemes? = null) : Constructable {
     override fun construct(): String {
         If.merge(Cond)
         val ifCondition = _IfCondition(If)

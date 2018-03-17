@@ -9,7 +9,7 @@ import additional.SymbolicSeq
  * LanguagePrimitives.Class object -- hardcoded
  * */
 
-fun main(args: Array<String>) {
+fun get_base_object(): Class {
     val reimplementComment = OneStringComment("Reimplement it")
     val objectName = "_Object"
 
@@ -52,10 +52,5 @@ fun main(args: Array<String>) {
             objectMethodCollection
     )
 
-    val classObject = Class(classLexemes)
-
-    Project.sourceCodeFiles = arrayOf(classObject)
-    val project = Project()
-
-    print(project)
+    return Class(classLexemes)
 }
