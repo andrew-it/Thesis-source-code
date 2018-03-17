@@ -6,6 +6,7 @@ import additional.PatternsLoader.getStdFuncName
 import additional.STD_FUNCTIONS
 import additional.SymbolicSeq
 
+// TODO variables
 class StandardOutput(message: String) : FunctionCall(
         Lexemes(
                 EXPR_TYPES.FUNC_NAME, SymbolicSeq(getStdFuncName(STD_FUNCTIONS.CONSOLE_OUT)),
@@ -13,7 +14,7 @@ class StandardOutput(message: String) : FunctionCall(
         )
 )
 
-// TODO variable
+// TODO variables
 class StandardInput(variable: VarName) : FunctionCall(
         Lexemes(
                 EXPR_TYPES.FUNC_NAME, SymbolicSeq(getStdFuncName(STD_FUNCTIONS.CONSOLE_IN)),

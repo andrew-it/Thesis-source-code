@@ -2,10 +2,10 @@ package language_primitives
 
 import additional.*
 
-/** TODO
- * 1. Разделять на файлы: вроде c и h
- * 2. Добавлять (include) эти файлы в Main
- * 3. В каждую функцию добавлять указатель на this (self)
+/** Plan:
+ * 1. Divide into the files with .c and .h extensions
+ * 2. Include above files to the Main
+ * 3. Add self-pointer to every member of class
  *
  * =========== TYPE_ALIAS.h ===========
  * #ifndef TYPE_ALIAS
