@@ -1,3 +1,6 @@
+package additional
+
+import language_primitives.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -27,12 +30,10 @@ internal class ConditionalTest {
 
         true_cond = Scope(arrayOf(trueSymbol))
         false_cond = Scope(arrayOf(falseSymbol))
-
-
     }
 
     @Test
-    fun allCasesContition() {
+    fun allCasesCondition() {
         val eq = "if(CONDITION){TRUE}else{FALSE}"
 
         val condition = IfCondition(

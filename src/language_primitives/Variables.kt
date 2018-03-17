@@ -1,3 +1,7 @@
+package language_primitives
+
+import additional.*
+
 open class SomeTypeValue(lexeme: Lexemes) : Patternable(lexeme) {
     override val patternType = PATTERN_TYPES.VAL_INT // FIXME val_int
 }

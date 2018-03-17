@@ -1,3 +1,9 @@
+package language_primitives
+
+import additional.EXPR_TYPES
+import additional.Lexemes
+import additional.PATTERN_TYPES
+
 open class FunctionCall(lexeme: Lexemes) : Patternable(lexeme) {
     init {
         Dependencies.addDependency(lexeme.lexemes[EXPR_TYPES.FUNC_NAME].toString())

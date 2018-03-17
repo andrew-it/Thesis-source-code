@@ -1,4 +1,10 @@
-import PatternsLoader.getStdFuncName
+package language_primitives
+
+import additional.EXPR_TYPES
+import additional.Lexemes
+import additional.PatternsLoader.getStdFuncName
+import additional.STD_FUNCTIONS
+import additional.SymbolicSeq
 
 class StandardOutput(message: String) : FunctionCall(
         Lexemes(

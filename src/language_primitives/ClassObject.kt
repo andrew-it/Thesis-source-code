@@ -1,5 +1,12 @@
+package language_primitives
+
+import additional.EXPR_TYPES
+import additional.Lexemes
+import additional.STD_TYPES
+import additional.SymbolicSeq
+
 /**
- * Class object -- hardcoded
+ * LanguagePrimitives.Class object -- hardcoded
  * */
 
 fun main(args: Array<String>) {

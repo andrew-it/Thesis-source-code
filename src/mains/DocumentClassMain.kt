@@ -1,3 +1,10 @@
+package mains
+
+import additional.EXPR_TYPES
+import additional.Lexemes
+import additional.SymbolicSeq
+import language_primitives.*
+
 fun main(args: Array<String>) {
     // Function createTextNode
     val createTextNodeLexemes = Lexemes(

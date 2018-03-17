@@ -1,3 +1,9 @@
+package language_primitives
+
+import additional.Lexemes
+import additional.PATTERN_TYPES
+import additional.PatternsLoader
+
 interface Constructable {
     fun construct(): String
 }

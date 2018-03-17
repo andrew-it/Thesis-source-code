@@ -1,3 +1,8 @@
+package additional
+
+import language_primitives.Constructable
+import language_primitives.Patternable
+
 data class Lexemes(val lexemes: HashMap<EXPR_TYPES, Constructable>) {
     constructor(type: EXPR_TYPES, lexeme: Constructable) : this(
             hashMapOf(Pair(type, lexeme))

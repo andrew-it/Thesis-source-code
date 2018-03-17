@@ -1,4 +1,7 @@
-import PatternsLoader.getDependency
+package language_primitives
+
+import additional.*
+import additional.PatternsLoader.getDependency
 import java.util.*
 
 class Scope(private val construncts: Array<Constructable>) : Constructable {

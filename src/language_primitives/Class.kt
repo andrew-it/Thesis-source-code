@@ -1,3 +1,7 @@
+package language_primitives
+
+import additional.*
+
 /** TODO
  * 1. Разделять на файлы: вроде c и h
  * 2. Добавлять (include) эти файлы в Main
@@ -33,7 +37,7 @@
 class Class(private val lexeme: Lexemes) : SourceCode {
     init {
         if (lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS] == null)
-            throw NotAllowedLexeme("Class haven't filename")
+            throw NotAllowedLexeme("LanguagePrimitives.Class haven't filename")
     }
 
     override var filename = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]!! // FIXME !!
