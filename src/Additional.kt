@@ -30,7 +30,11 @@ data class Lexemes(val lexemes: HashMap<EXPR_TYPES, Constructable>) {
     }
 }
 
-open class SymbolicSeq(private val stub: String) : Constructable {
+open class SymbolicSeq(stub: String) : Patternable(Lexemes(EXPR_TYPES.VALUE, Symbols(stub))) {
+    override val patternType = PATTERN_TYPES.SYMBOLIC_SEQ
+}
+
+class Symbols(private val stub: String) : Constructable {
     override fun construct(): String {
         return stub
     }

@@ -74,6 +74,15 @@
     "FUNC_PROTOTYPE": {
       "signature_delimiter": ",",
       "pattern": "\nRET_TYPE FUNC_NAME(SIGNATURE);"
+    },
+    "FUNC_RETURN": {
+      "pattern": "return VAR_NAME;"
+    },
+    "SYMBOLIC_SEQ": {
+      "pattern": "VALUE"
+    },
+    "ONE_STRING_COMMENT": {
+      "pattern": "// VALUE"
     }
   },
   "dependencies": {
