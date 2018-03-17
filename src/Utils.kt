@@ -3,7 +3,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 object PatternsLoader {
-    private const val path_str = "src/c_patterns.json"
+    private const val path_str = "src/JsonPatterns/c_patterns.json"
     private val file_content: String = String(Files.readAllBytes(Paths.get(path_str)))
     private val json_object: JSONObject = JSONObject(file_content)
     private val dependencies: JSONObject = json_object.getJSONObject("dependencies")
