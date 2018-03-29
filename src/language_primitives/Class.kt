@@ -35,12 +35,16 @@ import additional.*
  **/
 
 class Class(private val lexeme: Lexemes) : SourceCode {
+    override var filename = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]!!
+
     init {
-        if (lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS] == null)
+        val name = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]
+        if (name is Constructable)
+            filename = name
+        else
             throw NotAllowedLexeme("LanguagePrimitives.Class haven't filename")
     }
 
-    override var filename = lexeme.lexemes[EXPR_TYPES.TYPE_ALIAS]!! // FIXME !!
     private val typeAlias = filename.construct()
     private val superName = VarName("_super")
     private val thisPointerName = VarName("this")
@@ -81,7 +85,6 @@ class Class(private val lexeme: Lexemes) : SourceCode {
         return textWrap(filename.construct() + ".c") + "\n" + source.construct() +
                 textWrap(filename.construct() + ".h") + "\n" + header.construct()
     }
-
 }
 
 class ClassTypeAlias(type: String) : TypeAlias(type)
